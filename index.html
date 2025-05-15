@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GeoGo</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-white text-green-900 font-sans">
   <!-- Header -->
-<header class="bg-white text-black py-4 px-6 flex justify-between items-center shadow-md shadow-lg">
+  <header class="bg-white text-black py-4 px-6 flex justify-between items-center shadow-md shadow-lg">
     <div class="text-2xl font-bold"><a href="index.html">GeoGo</a></div>
     <div class="space-x-4">
       <a href="/routes.html" class="hover:underline">Routes</a>
 
-        <a href="/timetable.html" class="hover:underline">Time Table</a>
-        <a href="/accomodation.html" class="hover:underline">Accomodations</a>
+      <a href="/timetable.html" class="hover:underline">Time Table</a>
+      <a href="/accomodation.html" class="hover:underline">Accomodations</a>
     </div>
-</header>
+  </header>
 
   <!-- Hero -->
-<section class="h-64 relative overflow-hidden">
-    <img src="https://lhgeopark.fi/wp-content/uploads/2023/11/Lauhanvuoren-nakotornissa-Laura-Rautjoki-Anna-Mari-Lamsa-LH-Geopark-1920x960.jpg" alt="Photo: Laura Rautjoki, Anna-Mari Lämsä" class="absolute inset-0 w-full h-full object-cover">
-</section>
+  <section class="h-64 relative overflow-hidden">
+    <img
+      src="https://lhgeopark.fi/wp-content/uploads/2023/11/Lauhanvuoren-nakotornissa-Laura-Rautjoki-Anna-Mari-Lamsa-LH-Geopark-1920x960.jpg"
+      alt="Photo: Laura Rautjoki, Anna-Mari Lämsä" class="absolute inset-0 w-full h-full object-cover">
+  </section>
 
   <!-- Booking Form -->
   <section class="bg-white shadow-lg rounded-lg p-6 mx-4 mt-8 max-w-5xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input type="text" placeholder="Your Name" class="border p-2 rounded" />
-        <input type="email" placeholder="Your Email" class="border p-2 rounded" />
+      <input type="text" placeholder="Your Name" class="border p-2 rounded" />
+      <input type="email" placeholder="Your Email" class="border p-2 rounded" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <select class="border p-2 rounded bg-white">
@@ -42,68 +46,80 @@
       </select>
       <input type="date" class="border p-2 rounded" />
       <select class="border p-2 rounded bg-white" id="ticket-type">
-        <option name="adult" id="adult">1x Adult (30 to 64)</option>
-        <option name="young" id="young">1x Young (13 to 29)</option>
-        <option name="child" id="child">1x Child (4 to 12)</option>
+        <option id="adult">1x Adult (30 to 64)</option>
+        <option id="young">1x Young (13 to 29)</option>
+        <option id="child">1x Child (4 to 12)</option>
       </select>
       <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" id="buy-btn">BUY</button>
     </div>
     <hr class="my-4">
     <fieldset>
-        <legend class="text-sm/6 font-semibold text-gray-900">Additional requirements</legend>
-        <p class="mt-1 text-sm/6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
-        <div class="mt-6 space-y-6">
-          <div class="flex items-center gap-x-3">
-            <input id="push-everything" name="everything" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label class="block text-sm/6 font-medium text-gray-900">Everything</label>
-          </div>
-          <div class="flex items-center gap-x-3">
-            <input name="rental-bike" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label class="block text-sm/6 font-medium text-gray-900">Rental Bike</label>
-          </div>
-          <div class="flex items-center gap-x-3">
-            <input name="lunch" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label class="block text-sm/6 font-medium text-gray-900">Lunch</label>
-          </div>
-          <div class="flex items-center gap-x-3">
-            <input name="trip-to-hotspots" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label class="block text-sm/6 font-medium text-gray-900">Trip To The Hotspots</label>
-          </div>
+      <legend class="text-sm font-semibold text-gray-900">Additional requirements</legend>
+      <p class="mt-1 text-sm text-gray-600">These are delivered via SMS to your mobile phone.</p>
+      <div class="mt-6 space-y-4">
+        <div class="flex items-center gap-x-2">
+          <input id="push-everything" name="everything" type="checkbox"
+            class="h-4 w-4 text-green-600 border-gray-300 rounded">
+          <label for="push-everything" class="text-sm font-medium text-gray-900">Everything</label>
         </div>
-      </fieldset>
-      <div class="mt-4">
-        <textarea placeholder="Additional Information (e.g., traveling with a child)" class="border p-2 rounded w-full"></textarea>
+        <div class="flex items-center gap-x-2">
+          <input id="rental-bike" name="rental-bike" type="checkbox"
+            class="h-4 w-4 text-green-600 border-gray-300 rounded">
+          <label for="rental-bike" class="text-sm font-medium text-gray-900">Rental Bike</label>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <input id="lunch" name="lunch" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded">
+          <label for="lunch" class="text-sm font-medium text-gray-900">Lunch</label>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <input id="trip-to-hotspots" name="trip-to-hotspots" type="checkbox"
+            class="h-4 w-4 text-green-600 border-gray-300 rounded">
+          <label for="trip-to-hotspots" class="text-sm font-medium text-gray-900">Trip To The Hotspots</label>
+        </div>
       </div>
+    </fieldset>
+    <div class="mt-4">
+      <textarea placeholder="Additional Information (e.g., traveling with a child)"
+        class="border p-2 rounded w-full"></textarea>
+    </div>
   </section>
 
   <!-- Monthly Offers -->
-<section class="mt-12 p-6">
+  <section class="mt-12 p-6">
     <h2 class="text-2xl font-bold mb-4 text-center">The main hotspots</h2>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded shadow p-4">
-            <img src="https://lhgeopark.fi/wp-content/uploads/2023/11/Lauhanvuoren-kansallispuiston-Kivijata-Ismo-Nousiainen-LH-Geopark-1200x800.jpg" alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
-            <div class="p-2">
-                <h3 class="text-lg font-bold mb-1">Lauhanvuoren Kansallispuiston Kivijata</h3>
-                <p class="text-gray-700">Discover the unique geological formations of Lauhanvuoren Kansallispuiston Kivijata, a must-see destination for nature enthusiasts.</p>
-            </div>
+      <div class="bg-white rounded shadow p-4">
+        <img
+          src="https://lhgeopark.fi/wp-content/uploads/2023/11/Lauhanvuoren-kansallispuiston-Kivijata-Ismo-Nousiainen-LH-Geopark-1200x800.jpg"
+          alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
+        <div class="p-2">
+          <h3 class="text-lg font-bold mb-1">Lauhanvuoren Kansallispuiston Kivijata</h3>
+          <p class="text-gray-700">Discover the unique geological formations of Lauhanvuoren Kansallispuiston Kivijata,
+            a must-see destination for nature enthusiasts.</p>
         </div>
-        <div class="bg-white rounded shadow p-4">
-            <img src="https://visitsuupohja.fi/wp-content/uploads/Lauhanvuoren-nakotorni-2048x1440.jpg" alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
-            <div class="p-2">
-                <h3 class="text-lg font-bold mb-1">Lauhanvuori Lookout Tower</h3>
-                <p class="text-gray-700">Climb the Lauhanvuori lookout tower for breathtaking panoramic views of the surrounding landscapes.</p>
-            </div>
+      </div>
+      <div class="bg-white rounded shadow p-4">
+        <img src="https://visitsuupohja.fi/wp-content/uploads/Lauhanvuoren-nakotorni-2048x1440.jpg"
+          alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
+        <div class="p-2">
+          <h3 class="text-lg font-bold mb-1">Lauhanvuori Lookout Tower</h3>
+          <p class="text-gray-700">Climb the Lauhanvuori lookout tower for breathtaking panoramic views of the
+            surrounding landscapes.</p>
         </div>
-        <div class="bg-white rounded shadow p-4">
-            <img src="https://lhgeopark.fi/wp-content/uploads/2023/10/Syksyinen-Kauhaneva-Mirja-Koivisto-LH-Geopark-1440x960.jpg" alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
-            <div class="p-2">
-                <h3 class="text-lg font-bold mb-1">Kauhaneva-Pohjankangas National Park</h3>
-                <p class="text-gray-700">Immerse yourself in the serene beauty of Kauhaneva-Pohjankangas National Park, a perfect spot for hiking and birdwatching.</p>
-            </div>
+      </div>
+      <div class="bg-white rounded shadow p-4">
+        <img
+          src="https://lhgeopark.fi/wp-content/uploads/2023/10/Syksyinen-Kauhaneva-Mirja-Koivisto-LH-Geopark-1440x960.jpg"
+          alt="Lauhanvuoren Kansallispuiston Kivijata" class="rounded-t mb-2 w-full object-cover" />
+        <div class="p-2">
+          <h3 class="text-lg font-bold mb-1">Kauhaneva-Pohjankangas National Park</h3>
+          <p class="text-gray-700">Immerse yourself in the serene beauty of Kauhaneva-Pohjankangas National Park, a
+            perfect spot for hiking and birdwatching.</p>
         </div>
-        
+      </div>
+
     </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer class="mt-16 bg-green-800 text-white py-6 text-center text-sm">
@@ -112,4 +128,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
