@@ -1,62 +1,85 @@
-let buyBtn = document.getElementById("buy-btn");
-let ticketType = document.getElementById("ticket-type");
-let everythingOption = document.getElementById("push-everything");
-let otherOptions = document.querySelectorAll('input[name="includeAll"]:not(#push-everything)');
+document.addEventListener('DOMContentLoaded', function () {
+    const ticketSelect = document.getElementById('ticket-type');
+    const buyBtn = document.getElementById('buy-btn');
+    const everythingCheckbox = document.getElementById('push-everything');
 
-// Add event listener to the ticket-type dropdown
-ticketType.addEventListener("change", updateButton);
+    const addOnCheckboxes = {
+      "rental-bike": document.getElementById('rental-bike'),
+      "lunch": document.getElementById('lunch'),
+      "trip-to-hotspots": document.getElementById('trip-to-hotspots')
+    };
 
-// Function to calculate the total price
-function calculatePrice(adults, children, includeAll) {
-    let adultPrice = 15; // Base price for adults
-    let bikePrice = 35;
-    let lunchPrice = 7.5;
-    let hotspotsPrice = 5;
-    let fullAdultPrice = 62.5; // Discounted price for all-inclusive adults (-5)
+    const pricingTable = {
+      adult: {
+        base: 15,
+        "rental-bike": 35,
+        "lunch": 7.5,
+        "trip-to-hotspots": 5,
+        all: -5  // discount if all options are selected
+      },
+      young: {
+        base: 15,
+        "rental-bike": 22.5,
+        "lunch": 7.5,
+        "trip-to-hotspots": 5,
+        all: -5
+      },
+      child: {
+        base: 7.5,
+        "rental-bike": 20,
+        "lunch": 0,
+        "trip-to-hotspots": 0,
+        all: -5
+      }
+    };
 
-    let childBusPrice = 7.5;
-    let childBikePrice = 20;
-    let fullChildPrice = 27.5; // All-inclusive children
-
-    let totalPrice = 0;
-
-    // Calculate adult price
-    if (includeAll) {
-        totalPrice += adults * fullAdultPrice;
-    } else {
-        totalPrice += adults * (adultPrice + bikePrice + lunchPrice + hotspotsPrice);
+    function getSelectedTicketType() {
+      return ticketSelect.options[ticketSelect.selectedIndex].id;
     }
 
-    // Calculate child price
-    if (includeAll) {
-        totalPrice += children * fullChildPrice;
-    } else {
-        totalPrice += children * (childBusPrice + childBikePrice);
+    function calculateTotal() {
+      const ticketType = getSelectedTicketType();
+      const ticketPricing = pricingTable[ticketType];
+      let total = ticketPricing.base;
+      let allSelected = true;
+
+      for (const [key, checkbox] of Object.entries(addOnCheckboxes)) {
+        if (checkbox.checked) {
+          total += ticketPricing[key] || 0;
+        } else {
+          allSelected = false;
+        }
+      }
+
+      if (allSelected) {
+        total += ticketPricing.all || 0;
+      }
+
+      return total;
     }
 
-    return totalPrice.toFixed(2); // Return price with two decimal places
-}
+    function updatePriceDisplay() {
+      const total = calculateTotal();
+      buyBtn.textContent = `BUY - €${total}`;
+    }
 
-// Function to update the button text dynamically
-function updateButton() {
-    // Determine the number of adults and children based on the selected ticket type
-    let ticketValue = ticketType.value;
-    let adults = ticketValue === "1x Adult (30 to 64)" ? 1 : 0;
-    let children = ticketValue === "1x Child (4 to 12)" ? 1 : 0;
+    // "Everything" checkbox logic
+    everythingCheckbox.addEventListener('change', () => {
+      const check = everythingCheckbox.checked;
+      Object.values(addOnCheckboxes).forEach(cb => cb.checked = check);
+      updatePriceDisplay();
+    });
 
-    // Check if the "all-inclusive" option is selected
-    let includeAll = everythingOption.checked;
+    // Sync "Everything" checkbox if individual add-ons change
+    Object.values(addOnCheckboxes).forEach(cb => {
+      cb.addEventListener('change', () => {
+        const allChecked = Object.values(addOnCheckboxes).every(cb => cb.checked);
+        everythingCheckbox.checked = allChecked;
+        updatePriceDisplay();
+      });
+    });
 
-    // Calculate the final price
-    let finalPrice = calculatePrice(adults, children, includeAll);
+    ticketSelect.addEventListener('change', updatePriceDisplay);
 
-    // Update the button text
-    buyBtn.textContent = `BUY (${finalPrice}€)`;
-}
-
-function getSelectedOption(){
-    let
-}
-
-// Initial button update
-updateButton();
+    updatePriceDisplay();
+  });
