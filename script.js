@@ -54,9 +54,5 @@ function updateButton() {
     buyBtn.textContent = `BUY (${finalPrice}€)`;
 }
 
-function getSelectedOption(){
-    let
-}
-
 // Initial button update
 updateButton();
