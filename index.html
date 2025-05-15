@@ -39,12 +39,12 @@
         <option>Isojoki</option>
       </select>
       <input type="date" class="border p-2 rounded" />
-      <select class="border p-2 rounded bg-white">
-        <option>1x Adult (30 to 64)</option>
-        <option>1x Young (13 to 29)</option>
-        <option>1x Child (4 to 12)</option>
+      <select class="border p-2 rounded bg-white" id="ticket-type">
+        <option name="adult" id="adult">1x Adult (30 to 64)</option>
+        <option name="young" id="young">1x Young (13 to 29)</option>
+        <option name="child" id="child">1x Child (4 to 12)</option>
       </select>
-      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">BUY</button>
+      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" id="buy-btn">BUY</button>
     </div>
     <hr class="my-4">
     <fieldset>
@@ -52,16 +52,20 @@
         <p class="mt-1 text-sm/6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
         <div class="mt-6 space-y-6">
           <div class="flex items-center gap-x-3">
-            <input id="push-everything" name="push-notifications" type="radio" checked class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label for="push-everything" class="block text-sm/6 font-medium text-gray-900">Everything</label>
+            <input id="push-everything" name="everything" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
+            <label class="block text-sm/6 font-medium text-gray-900">Everything</label>
           </div>
           <div class="flex items-center gap-x-3">
-            <input id="push-email" name="push-notifications" type="radio" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label for="push-email" class="block text-sm/6 font-medium text-gray-900">Rental Bike</label>
+            <input name="rental-bike" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
+            <label class="block text-sm/6 font-medium text-gray-900">Rental Bike</label>
           </div>
           <div class="flex items-center gap-x-3">
-            <input id="push-nothing" name="push-notifications" type="radio" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-            <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">Trip To The Hotspots</label>
+            <input name="lunch" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
+            <label class="block text-sm/6 font-medium text-gray-900">Lunch</label>
+          </div>
+          <div class="flex items-center gap-x-3">
+            <input name="trip-to-hotspots" type="checkbox" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-green-600 checked:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
+            <label class="block text-sm/6 font-medium text-gray-900">Trip To The Hotspots</label>
           </div>
         </div>
       </fieldset>
@@ -103,5 +107,7 @@
   <footer class="mt-16 bg-green-800 text-white py-6 text-center text-sm">
     © 2025 GeoGo. The greener way to go.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
